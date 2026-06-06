@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="style.css">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Weather Now — Dashboard</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+</head>
+<body>
+  <img class="logo-image" src="assets/images/logo.svg" alt="logo">
+  <img class="icon-units" src="assets/images/icon-units.svg" alt="">
+ <div class="units" id="units-trigger">Units</div>
+
+<div class="units-panel" id="units-panel">
+  <div class="option">Switch to imperial</div>
+  <div class="section-title">Temperature</div>
+  <div class="option" data-value="celsius">Celsius (°C)</div>
+  <div class="option" data-value="fahrenheit">Fahrenheit (°F)</div>
+   <div style="color: rgba(128, 128, 128, 0.213);">&nbsp;&nbsp;&nbsp;_________________________&nbsp;&nbsp;&nbsp;</div>
+  <div class="section-title">Wind Speed</div>
+  <div class="option" data-value="kmh">km/h</div>
+  <div class="option" data-value="mph">mph</div>
+    <div style="color: rgba(128, 128, 128, 0.213);">&nbsp;&nbsp;&nbsp;_________________________&nbsp;&nbsp;&nbsp;</div>
+  <div class="section-title">Precipitation</div>
+  <div class="option" data-value="mm">Millimeters (mm)</div>
+  <div class="option" data-value="inches">Inches (in)</div>
+</div>
+
+  <div class="app">
+    <div class="top">
+      <div class="logo"></div>
+      
+    </div>
+    <h1 class="title">How's the sky looking today?</h1>
+    
+    <div class="search-wrap">
+      <div class="search">
+        <img class="search-logo" src="assets/images/icon-search.svg" alt="">
+        <input id="city" type="search" placeholder="Search for a place..." aria-label="Search for a place">
+        
+<div id="suggestions" class="suggestions"></div>
+        <button id="search-btn" onclick="getWeather()">Search</button>
+      </div>
+    </div>
+    <div class="layout">
+      <div class="left">
+        <div class="main-card">
+          <div class="main-left">
+            
+            <div class="location">Berlin, Germany</div>
+            <div class="date">Tuesday, Aug 5, 2025</div>
+          </div>
+          <div class="main-right">
+            <div class="main-sun">
+              <img class="main-sun" src="assets/images/icon-sunny.webp" alt="">
+            </div>
+            <div class="temp">20°</div>
+          
+          </div>
+        </div>
+        <div class="stats">
+          <div class="stat">
+            <div class="label">Feels Like</div>
+            <div class="value">18°</div>
+          </div>
+          <div class="stat">
+            <div class="label">Humidity</div>
+            <div class="value">46%</div>
+          </div>
+          <div class="stat">
+            <div class="label">Wind</div>
+            <div class="value">14 km/h</div>
+          </div>
+          <div class="stat">
+            <div class="label">Precipitation</div>
+            <div class="value">0 mm</div>
+          </div>
+        </div>
+        <div class="daily-area">
+          <div class="daily-title">Daily forecast</div>
+          <div class="daily-row" aria-label="Daily forecast">
+            <div class="day-card">
+              <div class="dow">Tue</div>
+              <div class="icon"><img src="assets/images/icon-rain.webp" alt="rain"></div>
+              <div class="range">20° <span style="opacity:.65">/ 14°</span></div>
+            </div>
+            <div class="day-card">
+              <div class="dow">Wed</div>
+              <div class="icon"><img src="assets/images/icon-rain.webp" alt="rain"></div>
+              <div class="range">21° <span style="opacity:.65">/ 15°</span></div>
+            </div>
+            <div class="day-card">
+              <div class="dow">Thu</div>
+              <div class="icon"><img src="assets/images/icon-sunny.webp" alt="sun"></div>
+              <div class="range">24° <span style="opacity:.65">/ 14°</span></div>
+            </div>
+            <div class="day-card">
+              <div class="dow">Fri</div>
+              <div class="icon"><img src="assets/images/icon-partly-cloudy.webp" alt="partly"></div>
+              <div class="range">25° <span style="opacity:.65">/ 13°</span></div>
+            </div>
+            <div class="day-card">
+              <div class="dow">Sat</div>
+              <div class="icon"><img src="assets/images/icon-storm.webp" alt="storm"></div>
+              <div class="range">21° <span style="opacity:.65">/ 15°</span></div>
+            </div>
+            <div class="day-card">
+              <div class="dow">Sun</div>
+              <div class="icon"><img src="assets/images/icon-partly-cloudy.webp" alt="cloud"></div>
+              <div class="range">25° <span style="opacity:.65">/ 16°</span></div>
+            </div>
+            <div class="day-card">
+              <div class="dow">Mon</div>
+              <div class="icon"><img src="assets/images/icon-fog.webp" alt="fog"></div>
+              <div class="range">24° <span style="opacity:.65">/ 15°</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <aside class="hourly-panel" aria-label="Hourly forecast">
+     <div class="hourly-head">
+  <div>Hourly forecast</div>
+
+
+  <div class="day-select" id="day-trigger">
+    <p class="selected-day">Tuesday</p>
+    <span class="arrow-down">▼</span>
+  </div>
+
+
+  <div class="day-panel" id="day-panel">
+    <div class="option" data-value="monday">Monday</div>
+    <div class="option" data-value="tuesday">Tuesday</div>
+    <div class="option" data-value="wednesday">Wednesday</div>
+    <div class="option" data-value="thursday">Thursday</div>
+    <div class="option" data-value="friday">Friday</div>
+    <div class="option" data-value="saturday">Saturday</div>
+    <div class="option" data-value="sunday">Sunday</div>
+    
+  </div>
+</div>
+
+        <div class="hourly-list">
+          <div class="hour">
+            <div class="mid"><img src="assets/images/icon-overcast.webp" alt=""><div></div></div>
+            <div class="time">1 PM</div>
+            <div class="temp-h">20°</div>
+          </div>
+          <div class="hour">
+            <div class="mid"><img src="assets/images/icon-overcast.webp" alt=""><div></div></div>
+            <div class="time">2 PM</div>
+            <div class="temp-h">20°</div>
+          </div>
+          <div class="hour">
+            <div class="mid"><img src="assets/images/icon-overcast.webp" alt=""><div></div></div>
+            <div class="time">3 PM</div>
+            <div class="temp-h">20°</div>
+          </div>
+          <div class="hour">
+            <div class="mid"><img src="assets/images/icon-partly-cloudy.webp" alt=""><div></div></div>
+              <div class="time">4 PM</div>
+            <div class="temp-h">20°</div>
+          </div>
+          <div class="hour">
+            
+            <div class="mid"><img src="assets/images/icon-sunny.webp" alt=""><div></div></div>
+           <div class="time">5 PM</div>
+            <div class="temp-h">20°</div>
+          </div>
+          <div class="hour">
+           
+            <div class="mid"><img src="assets/images/icon-overcast.webp" alt=""><div></div></div>
+           <div class="time">6 PM</div>
+            <div class="temp-h">19°</div>
+          </div>
+          <div class="hour">
+          
+            <div class="mid"><img src="assets/images/icon-rain.webp" alt=""><div></div></div>
+            <div class="time">7 PM</div>
+            <div class="temp-h">18°</div>
+          </div>
+          <div class="hour">
+            
+            <div class="mid"><img src="assets/images/icon-fog.webp" alt=""><div></div></div>
+          <div class="time">8 PM</div>
+            <div class="temp-h">18°</div>
+          </div>
+          <div class="hour">
+         
+            <div class="mid"><img src="assets/images/icon-rain.webp" alt=""><div></div></div>
+              <div class="time">9 PM</div>
+            <div class="temp-h">17°</div>
+          </div>
+          <div class="hour">
+         
+            <div class="mid"><img src="assets/images/icon-rain.webp" alt=""><div></div></div>
+              <div class="time">10 PM</div>
+            <div class="temp-h">17°</div>
+          </div>
+          <div class="hour">
+            <div class="mid"><img src="assets/images/icon-overcast.webp" alt=""><div></div></div>
+            <div class="time">11 PM</div>
+            <div class="temp-h">20°</div>
+          </div>
+          <div class="hour">
+            <div class="mid"><img src="assets/images/icon-overcast.webp" alt=""><div></div></div>
+            <div class="time">12 PM</div>
+            <div class="temp-h">20°</div>
+          </div>
+        
+        </div>
+      </aside>
+    </div>
+  </div>
+
+<script src="script.js"></script>
+</body>
+</html>
