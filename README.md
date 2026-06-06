@@ -31,12 +31,16 @@ It allows users to search for any city and view real-time weather conditions, ho
 ## Project Structure
 
 
-├── index.html 
-├── style.css 
-├── script.js 
-└── assets/ 
-    ├── images/ 
-    └── fonts/ 
+## Project Structure
+
+```text
+├── index.html
+├── style.css
+├── script.js
+└── assets/
+    ├── images/
+    └── fonts/
+```
 
 
 ## Preview
